@@ -6,7 +6,7 @@ import { Comment } from 'api/githubAPI'
 import { UserWithAvatar } from 'components/UserWithAvatar'
 
 import styles from './IssueComments.module.css'
-import { useIssueComments } from 'state'
+import { useIssueComments } from './state'
 
 interface ICProps {
   comment: Comment

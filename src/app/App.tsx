@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { lazy, Suspense } from 'react'
 import './App.css'
 import { RepoSearchForm } from 'features/repoSearch/RepoSearchForm'
 import { IssuesListPage } from 'features/issuesList/IssuesListPage'
-import { IssueDetailsPage } from 'features/issueDetails/IssueDetailsPage'
 import { useSelectedIssueId } from 'state'
+
+const IssueDetailsPage = lazy(
+  () => import('features/issueDetails/IssueDetailsPage')
+)
 
 const List: React.FC = () =>
   useSelectedIssueId() === null ? (
@@ -16,7 +19,9 @@ const List: React.FC = () =>
 const App: React.FC = () => (
   <div className="App">
     <List />
-    <IssueDetailsPage />
+    <Suspense fallback={null}>
+      <IssueDetailsPage />
+    </Suspense>
   </div>
 )
 

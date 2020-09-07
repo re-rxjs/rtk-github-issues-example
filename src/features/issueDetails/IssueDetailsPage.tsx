@@ -11,7 +11,8 @@ import { IssueComments } from './IssueComments'
 import styles from './IssueDetailsPage.module.css'
 import './IssueDetailsPage.css'
 import { ErrorBoundary, FallbackProps } from 'react-error-boundary'
-import { onIssueUnselecteed, useIssue, useSelectedIssueId } from 'state'
+import { onIssueUnselecteed, useIssue } from './state'
+import { useSelectedIssueId } from 'state'
 
 const Comments: React.FC = () => {
   const { comments } = useIssue()
@@ -87,7 +88,9 @@ const Issue: React.FC<{ id: number }> = ({ id }) => {
   )
 }
 
-export const IssueDetailsPage: React.FC = () => {
+const IssueDetailsPage: React.FC = () => {
   const id = useSelectedIssueId()
   return id === null ? null : <Issue id={id} />
 }
+
+export default IssueDetailsPage
